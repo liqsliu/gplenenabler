@@ -28,10 +28,15 @@ A flexible DNS proxy, with support for modern encrypted DNS protocols such as [D
   ```
 
 ## Configuration (post-installing)
-- Configuration located on `/sdcard/dnscrypt-proxy/dnscrypt-proxy.toml` [or /data/media/0/dnscrypt-proxy/dnscrypt-proxy.toml]
+- Configuration located at `/sdcard/dnscrypt-proxy/dnscrypt-proxy.toml` [or /data/media/0/dnscrypt-proxy/dnscrypt-proxy.toml]
 - For more detailed configuration please refer to [official documentation](https://github.com/jedisct1/dnscrypt-proxy/wiki/Configuration)
 
 ## Changelog
+
+### v2.8.8
+- moved code from option.sh to install.sh
+- updated & optimised install.sh
+
 ### v2.8.7
 - changed path of configuration file [dnscrypt-toml] from /system/etc/ to /data/media/0/ [or /sdcard]
 - updated binary & configuration files to 2.0.25

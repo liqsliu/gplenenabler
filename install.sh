@@ -127,8 +127,8 @@ print_modname() {
   ui_print "*       DNSCrypt-Proxy2       *"
   ui_print "*        Magisk Module        *"
   ui_print "*******************************"
-  ui_print "*        v2.8.7               *"
-  ui_print "*           bluemeda          *"
+  ui_print "*        v2.8.8               *"
+  ui_print "*       bluemeda              *"
   ui_print "*******************************"
   ui_print " "
 }
@@ -149,15 +149,24 @@ on_install() {
     BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-x86_64
   fi
 
-  CONFIG_PATH=$TMPDIR/config
+  CONFIG_PATH_SRC=$TMPDIR/config
+  CONFIG_PATH_DEST=/data/media/0/dnscrypt-proxy
+  CONFIG_FILE_DEST=/data/media/0/dnscrypt-proxy/dnscrypt-proxy.toml
 
   unzip -o "$ZIPFILE" 'config/*' 'binary/*' -d $TMPDIR
 
   ui_print "* Creating binary path"
   mkdir -p $MODPATH/system/bin
 
-  ui_print "* Creating config path"
-  mkdir -p /data/media/0/dnscrypt-proxy
+  if ![ -d "$CONFIG_PATH_DEST" ]; then
+      ui_print "* Creating config path"
+      mkdir -p $CONFIG_PATH_DEST
+  fi 
+
+  if [ -d "$CONFIG_PATH_DEST" ]; then
+    ui_print "* Copying example and license files"
+    cp -af $CONFIG_PATH_SRC/* $CONFIG_PATH_DEST/
+  fi
 
   if [ -f "$BINARY_PATH" ]; then
     ui_print "* Copying binary for $ARCH"
@@ -166,14 +175,13 @@ on_install() {
     abort "Binary file for $ARCH is missing!"
   fi
 
-  if [ -d "$CONFIG_PATH" ]; then
-    ui_print "* Copying example and license files"
-    cp -af $CONFIG_PATH/* /data/media/0/dnscrypt-proxy/
-  else
-    abort "Config file is missing!"
+# if it is fresh install or if the configuration file is absent, copy & rename the example file as configuration file. Change the port from 53 to 5354.
+  
+  if ![ -f "$CONFIG_FILE_DEST" ]; then   
+    cp -afv $CONFIG_PATH_DEST/example-dnscrypt-proxy.toml $CONFIG_FILE_DEST
+    sed -i -e 's/127.0.0.1:53/127.0.0.1:5354/g' $CONFIG_FILE_DEST
+    sed -i -e 's/\[::1\]:53/\[::1\]:5354/g' $CONFIG_FILE_DEST
   fi
-
-  . $TMPDIR/option.sh
 
 }
 

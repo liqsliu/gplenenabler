@@ -1,5 +1,8 @@
 # Changelog
 ## Changelog
+### v2.8.8
+- moved code from option.sh to install.sh
+- updated & optimised install.sh
 ### v2.8.7
 - changed path of configuration file [dnscrypt.toml] from /system/etc/ to /data/media/0/ [or /sdcard]
 - updated binary & configuration files to 2.0.25
