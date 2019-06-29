@@ -150,8 +150,8 @@ on_install() {
   fi
 
   CONFIG_PATH_SRC=$TMPDIR/config
-  CONFIG_PATH_DEST=/data/media/0/dnscrypt-proxy
-  CONFIG_FILE_DEST=/data/media/0/dnscrypt-proxy/dnscrypt-proxy.toml
+  CONFIG_PATH_DEST=/sdcard/dnscrypt-proxy
+  CONFIG_FILE_DEST=/sdcard/dnscrypt-proxy/dnscrypt-proxy.toml
 
   unzip -o "$ZIPFILE" 'config/*' 'binary/*' -d $TMPDIR
 
@@ -175,12 +175,16 @@ on_install() {
     abort "Binary file for $ARCH is missing!"
   fi
 
-# if it is fresh install or if the configuration file is absent, copy & rename the example file as configuration file. Change the port from 53 to 5354.
+  # if it is fresh install or if the configuration file is absent,
+    copy & rename the example file as configuration file. Change
+    the port from 53 to 5354. Changed netprobe_timeout from 60 seconds
+    to 31622400 seconds (366 days)
   
   if ![ -f "$CONFIG_FILE_DEST" ]; then   
     cp -afv $CONFIG_PATH_DEST/example-dnscrypt-proxy.toml $CONFIG_FILE_DEST
     sed -i -e 's/127.0.0.1:53/127.0.0.1:5354/g' $CONFIG_FILE_DEST
     sed -i -e 's/\[::1\]:53/\[::1\]:5354/g' $CONFIG_FILE_DEST
+    sed -i -e 's/netprobe_timeout = 60/netprobe_timeout = 31622400/g' $CONFIG_FILE_DEST
   fi
 
 }
