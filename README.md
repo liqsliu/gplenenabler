@@ -30,8 +30,6 @@ DNS66 or dnsfilter app may be used instead of custom script in  AFWall.
 
 ## Configuration (post-installing)
 - Configuration located at `/sdcard/dnscrypt-proxy/dnscrypt-proxy.toml` [or /data/media/0/dnscrypt-proxy/dnscrypt-proxy.toml]
-- 
-- 
 - For more detailed configuration please refer to [upstream documentation](https://github.com/jedisct1/dnscrypt-proxy/wiki/Configuration)
 
 ## Changelog
