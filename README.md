@@ -1,4 +1,4 @@
-# DNSCrypt Proxy 2 for Android
+# dnscrypt-proxy2 for Android [Revival] [Original magisk module of bluemeda - Revived]
 
 A flexible DNS proxy, with support for modern encrypted DNS protocols such as [DNSCrypt v2](https://github.com/DNSCrypt/dnscrypt-protocol/blob/master/DNSCRYPT-V2-PROTOCOL.txt) and [DNS-over-HTTP/2](https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-03).
 
