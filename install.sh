@@ -127,8 +127,9 @@ print_modname() {
   ui_print "*       DNSCrypt-Proxy2       *"
   ui_print "*        Magisk Module        *"
   ui_print "*******************************"
-  ui_print "*        v2.8.8               *"
-  ui_print "*       bluemeda              *"
+  ui_print "*        v2.8.9               *"
+  ui_print "*  created by bluemeda        *"
+  ui_print "*  revived by lindroidux      *"
   ui_print "*******************************"
   ui_print " "
 }
@@ -140,33 +141,24 @@ on_install() {
   # Extend/change the logic to whatever you want
 
   if [ "$ARCH" == "arm" ];then
-    BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-arm
+    BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-android-arm
   elif [ "$ARCH" == "arm64" ];then
-    BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-arm64
+    BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-android-arm64
   elif [ "$ARCH" == "x86" ];then
-    BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-x86
+    BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-android-x86
   elif [ "$ARCH" == "x64" ];then
-    BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-x86_64
+    BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-android-x86_64
   fi
 
-  CONFIG_PATH_SRC=$TMPDIR/config
-  CONFIG_PATH_DEST=/sdcard/dnscrypt-proxy
-  CONFIG_FILE_DEST=/sdcard/dnscrypt-proxy/dnscrypt-proxy.toml
+  CONFIG_PATH=$TMPDIR/config
 
   unzip -o "$ZIPFILE" 'config/*' 'binary/*' -d $TMPDIR
 
   ui_print "* Creating binary path"
   mkdir -p $MODPATH/system/bin
 
-  if ![ -d "$CONFIG_PATH_DEST" ]; then
-      ui_print "* Creating config path"
-      mkdir -p $CONFIG_PATH_DEST
-  fi 
-
-  if [ -d "$CONFIG_PATH_DEST" ]; then
-    ui_print "* Copying example and license files"
-    cp -af $CONFIG_PATH_SRC/* $CONFIG_PATH_DEST/
-  fi
+  ui_print "* Creating config path"
+  mkdir -p /data/media/0/dnscrypt-proxy
 
   if [ -f "$BINARY_PATH" ]; then
     ui_print "* Copying binary for $ARCH"
@@ -175,17 +167,14 @@ on_install() {
     abort "Binary file for $ARCH is missing!"
   fi
 
-  # if it is fresh install or if the configuration file is absent,
-    copy & rename the example file as configuration file. Change
-    the port from 53 to 5354. Changed netprobe_timeout from 60 seconds
-    to 31622400 seconds (366 days)
-  
-  if ![ -f "$CONFIG_FILE_DEST" ]; then   
-    cp -afv $CONFIG_PATH_DEST/example-dnscrypt-proxy.toml $CONFIG_FILE_DEST
-    sed -i -e 's/127.0.0.1:53/127.0.0.1:5354/g' $CONFIG_FILE_DEST
-    sed -i -e 's/\[::1\]:53/\[::1\]:5354/g' $CONFIG_FILE_DEST
-    sed -i -e 's/netprobe_timeout = 60/netprobe_timeout = 31622400/g' $CONFIG_FILE_DEST
+  if [ -d "$CONFIG_PATH" ]; then
+    ui_print "* Copying example and license files"
+    cp -af $CONFIG_PATH/* /data/media/0/dnscrypt-proxy/
+  else
+    abort "Config file is missing!"
   fi
+
+  . $TMPDIR/option.sh
 
 }
 
