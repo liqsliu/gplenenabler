@@ -43,4 +43,4 @@ DNS66 or dnsfilter app may be used instead of custom script in  AFWall.
 - [Full changelog](changelog.md)
 ## Credits
 - DNSCrypt-Proxy2 upstream | [jedisct1](https://github.com/jedisct1/dnscrypt-proxy)
-- [bluemeda & all other contributors](https://github.com/Magisk-Modules-Repo/dnscrypt-proxy/graphs/contributors)
+- [bluemeda & all other contributors for the magisk module](https://github.com/Magisk-Modules-Repo/dnscrypt-proxy/graphs/contributors)
