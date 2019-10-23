@@ -32,6 +32,13 @@ DNS66 or dnsfilter app may be used instead of custom script in  AFWall.
 - Configuration located at `/sdcard/dnscrypt-proxy/dnscrypt-proxy.toml` [or /data/media/0/dnscrypt-proxy/dnscrypt-proxy.toml]
 - For more detailed configuration please refer to [upstream documentation](https://github.com/jedisct1/dnscrypt-proxy/wiki/Configuration)
 
+## Testing
+- [http://www.dnssec-or-not.com/]  online test by VeriSign (no JavaScript required)
+- [http://en.conn.internet.nl/connection/] online test by Dutch Internet Standards Platform
+- [http://www.dnssec-failed.org/] webpage with bogus signature by Comcast (will not open at all if you are using DNSSEC)
+
+
+
 ## Changelog
 - [Full changelog](changelog.md)
 ## Credits
