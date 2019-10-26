@@ -1,4 +1,5 @@
-# dnscrypt-proxy2 for Android [Revival] [Original magisk module of bluemeda - Revived]
+# dnscrypt-proxy2 for Android [Revival] 
+### [bluemeda's original magisk module - Revived](https://github.com/Magisk-Modules-Repo/dnscrypt-proxy/) 
 
 A flexible DNS proxy, with support for modern encrypted DNS protocols such as [DNSCrypt v2](https://github.com/DNSCrypt/dnscrypt-protocol/blob/master/DNSCRYPT-V2-PROTOCOL.txt) and [DNS-over-HTTP/2](https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-03).
 
@@ -32,8 +33,15 @@ DNS66 or dnsfilter app may be used instead of custom script in  AFWall.
 - Configuration located at `/sdcard/dnscrypt-proxy/dnscrypt-proxy.toml` [or /data/media/0/dnscrypt-proxy/dnscrypt-proxy.toml]
 - For more detailed configuration please refer to [upstream documentation](https://github.com/jedisct1/dnscrypt-proxy/wiki/Configuration)
 
+## Testing
+- [http://www.dnssec-or-not.com/]  online test by VeriSign (no JavaScript required)
+- [http://en.conn.internet.nl/connection/] online test by Dutch Internet Standards Platform
+- [http://www.dnssec-failed.org/] webpage with bogus signature by Comcast (will not open at all if you are using DNSSEC)
+
+
+
 ## Changelog
 - [Full changelog](changelog.md)
 ## Credits
 - DNSCrypt-Proxy2 upstream | [jedisct1](https://github.com/jedisct1/dnscrypt-proxy)
-- [bluemeda & all other contributors](https://github.com/Magisk-Modules-Repo/dnscrypt-proxy/graphs/contributors)
+- [bluemeda & all other contributors for the magisk module](https://github.com/Magisk-Modules-Repo/dnscrypt-proxy/graphs/contributors)
