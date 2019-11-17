@@ -18,10 +18,10 @@ A flexible DNS proxy, with support for modern encrypted DNS protocols such as [D
   iptables -t nat -A OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination 127.0.0.1:5354
   iptables -t nat -A OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination 127.0.0.1:5354
   ``` 
- ~```
- ~ip6tables -t nat -A OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354~
- ~ip6tables -t nat -A OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354~
- ```~
+ ```
+ ~~ip6tables -t nat -A OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354~~
+ ~~ip6tables -t nat -A OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354~~
+ ```
 and this shutdown script
   ```
   iptables -t nat -D OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination 127.0.0.1:5354
@@ -29,8 +29,8 @@ and this shutdown script
   ```
  
  ``` 
-~ip6tables -t nat -D OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354~
- ~ip6tables -t nat -D OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354~
+~~ip6tables -t nat -D OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354~~
+ ~~ip6tables -t nat -D OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354~~
   ```
 Refer AFWall (Docs)[https://github.com/ukanth/afwall/wiki] (FAQs) [https://github.com/ukanth/afwall/wiki/FAQ] (custom scripts)[https://github.com/ukanth/afwall/wiki/CustomScripts]. 
 
