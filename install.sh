@@ -127,7 +127,7 @@ print_modname() {
   ui_print "*       DNSCrypt-Proxy2       *"
   ui_print "*        Magisk Module        *"
   ui_print "*******************************"
-  ui_print "*        v2.8.9               *"
+  ui_print "*        v2.9.0               *"
   ui_print "*  created by bluemeda        *"
   ui_print "*  revived by lindroidux      *"
   ui_print "*******************************"
@@ -145,7 +145,7 @@ on_install() {
   elif [ "$ARCH" == "arm64" ];then
     BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-android-arm64
   elif [ "$ARCH" == "x86" ];then
-    BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-android-x86
+    BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-android-i386
   elif [ "$ARCH" == "x64" ];then
     BINARY_PATH=$TMPDIR/binary/dnscrypt-proxy-android-x86_64
   fi

@@ -1,5 +1,8 @@
 # Changelog
 ## Changelog
+### v2.9.0
+- Revival of dnscrypt-proxy2  magisk-module of bluemeda 
+- updated binary & configuration files to upstream version 2.0.29
 ### v2.8.9
 - Revival of dnscrypt-proxy2  magisk-module of bluemeda 
 - updated binary & configuration files to upstream version 2.0.28
