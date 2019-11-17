@@ -5,7 +5,7 @@ A flexible DNS proxy, with support for modern encrypted DNS protocols such as [D
 
 ## Features
 - arm, arm64, x86 and x86_64 are supported.
-- ipv4 and ipv6 are supported.
+- ipv4  and ipv6  are supported.
 - All binary files are downloaded from [https://github.com/jedisct1/dnscrypt-proxy/releases](https://github.com/jedisct1/dnscrypt-proxy/releases)
 
 ## Installation
@@ -17,15 +17,15 @@ A flexible DNS proxy, with support for modern encrypted DNS protocols such as [D
   ```
   iptables -t nat -A OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination 127.0.0.1:5354
   iptables -t nat -A OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination 127.0.0.1:5354
-  ip6tables -t nat -A OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354
-  ip6tables -t nat -A OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354
+ ~ # ip6tables -t nat -A OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354
+  # ip6tables -t nat -A OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354 ~
   ```
-  ~and this shutdown script
+  and this shutdown script
   ```
   iptables -t nat -D OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination 127.0.0.1:5354
   iptables -t nat -D OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination 127.0.0.1:5354
-  ip6tables -t nat -D OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354
-  ip6tables -t nat -D OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354~
+ ~ # ip6tables -t nat -D OUTPUT -p tcp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354
+  # ip6tables -t nat -D OUTPUT -p udp ! -d 9.9.9.9 --dport 53 -j DNAT --to-destination [::1]:5354 ~
   ```
 Refer AFWall (Docs)[https://github.com/ukanth/afwall/wiki] (FAQs) [https://github.com/ukanth/afwall/wiki/FAQ] (custom scripts)[https://github.com/ukanth/afwall/wiki/CustomScripts]. 
 
