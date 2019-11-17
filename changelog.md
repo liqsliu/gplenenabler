@@ -1,5 +1,10 @@
 # Changelog
 ## Changelog
+### v2.9.1
+- Revival of dnscrypt-proxy2  magisk-module of bluemeda 
+- updated binary & configuration files to upstream version 2.0.31
+- redirection script included for manual copy to bootup auto-start directory. 
+- updated README.MD
 ### v2.9.0
 - Revival of dnscrypt-proxy2  magisk-module of bluemeda 
 - updated binary & configuration files to upstream version 2.0.29

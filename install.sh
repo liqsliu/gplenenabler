@@ -127,7 +127,7 @@ print_modname() {
   ui_print "*       DNSCrypt-Proxy2       *"
   ui_print "*        Magisk Module        *"
   ui_print "*******************************"
-  ui_print "*        v2.9.0               *"
+  ui_print "*        v2.9.1               *"
   ui_print "*  created by bluemeda        *"
   ui_print "*  revived by lindroidux      *"
   ui_print "*******************************"
