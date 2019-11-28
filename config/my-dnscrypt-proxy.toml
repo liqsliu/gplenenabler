@@ -426,7 +426,7 @@ cache_neg_max_ttl = 600
 
   # log_file = 'blocked.log'
 
-log_file = '/data/media/0/dnscrypt-proxy/blocked.log'
+# log_file = '/data/media/0/dnscrypt-proxy/blocked.log'
 
 
   ## Optional log format: tsv or ltsv (default: tsv)
