@@ -419,7 +419,7 @@ cache_neg_max_ttl = 600
 
   ## Path to the file of blocking rules (absolute, or relative to the same directory as the executable file)
 
-   blacklist_file = 'blacklist.txt'
+ #  blacklist_file = 'blacklist.txt'
 
 
   ## Optional path to a file logging blocked queries
