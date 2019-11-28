@@ -416,11 +416,8 @@ cache_neg_max_ttl = 600
 
   ## Path to the file of blocking rules (absolute, or relative to the same directory as the executable file)
 
-<<<<<<< HEAD
  #  blacklist_file = 'blacklist.txt'
-=======
 #   blacklist_file = '/data/media/0/dnscrypt-proxy/blacklist.txt'
->>>>>>> 2.9.2
 
 
   ## Optional path to a file logging blocked queries
