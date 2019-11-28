@@ -57,7 +57,7 @@ DNS66 or dnsfilter app (both apps available in F-Droid repo) can also  be used i
 
 
 ## Changelog
-- [Full changelog](changelog.md)
+- [Full changelog](https://github.com/Magisk-Modules-Repo/dnscrypt-proxy2/changelog.md)
 ## Credits
 - DNSCrypt-Proxy2 upstream | [jedisct1](https://github.com/jedisct1/dnscrypt-proxy)
 - [bluemeda & all other contributors for the magisk module](https://github.com/Magisk-Modules-Repo/dnscrypt-proxy2/graphs/contributors)
