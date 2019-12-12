@@ -51,8 +51,8 @@ DNS66 or dnsfilter app (both apps available in F-Droid repo) can also  be used i
 
 ## Testing
 - (http://www.dnssec-or-not.com/) online test by VeriSign (no JavaScript required)
-- [http://en.conn.internet.nl/connection/] online test by Dutch Internet Standards Platform
-- [http://www.dnssec-failed.org/] webpage with bogus signature by Comcast (will not open at all if you are using DNSSEC)
+- (http://en.conn.internet.nl/connection/) online test by Dutch Internet Standards Platform
+- (http://www.dnssec-failed.org/) webpage with bogus signature by Comcast (will not open at all if you are using DNSSEC)
 
 
 
