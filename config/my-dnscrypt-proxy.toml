@@ -78,7 +78,7 @@ require_nolog = true
 require_nofilter = true
 
 # Server names to avoid even if they match all criteria
-disabled_server_names = ['ffmuc.net','geekdns-hk','suami','charis','opennic-ethservices','2.dnscrypt-cert.233py.com', '2.dnscrypt-cert.opennic2.eth-services.de', '2.dnscrypt-cert.dnscrypt.uk']
+disabled_server_names = ['geekdns-hk','opennic-ethservices','2.dnscrypt-cert.233py.com', '2.dnscrypt-cert.opennic2.eth-services.de', '2.dnscrypt-cert.dnscrypt.uk']
 
 
 ## Always use TCP to connect to upstream servers.
@@ -207,8 +207,8 @@ cert_refresh_delay = 240
 # fallback_resolver = '8.8.8.8:53'
 
 
-## Always use the fallback resolver before the system DNS settings.
-
+## Never let dnscrypt-proxy try to use the system DNS settings;
+## unconditionally use the fallback resolver.
 
 ignore_system_dns = true
 
@@ -267,24 +267,15 @@ log_files_max_backups = 10
 #        Filters        #
 #########################
 
-## Note: if you are using dnsmasq, disable the `dnssec` option in dnsmasq if you
-## configure dnscrypt-proxy to do any kind of filtering (including the filters
-## below and blacklists).
-## But you can still choose resolvers that do DNSSEC validation.
 ## Immediately respond to IPv6-related queries with an empty response
 ## This makes things faster when there is no IPv6 connectivity, but can
 ## also cause reliability issues with some stub resolvers.
-
-
+## Do not enable if you added a validating resolver such as dnsmasq in front
+## of the proxy.
 
 block_ipv6 = false
 
 
-## Immediately respond to A and AAAA queries for host names without a domain name
-block_unqualified = true
-## Immediately respond to queries for local zones instead of leaking them to
-## upstream resolvers (always causing errors or timeouts).
-block_undelegated = true
 ## TTL for synthetic responses sent when a request has been blocked (due to
 ## IPv6 or blacklists).
 
@@ -355,24 +346,6 @@ cache_neg_min_ttl = 60
 ## Maximum TTL for negatively cached entries
 
 cache_neg_max_ttl = 600
-##################################
-#        Local DoH server        #
-##################################
-[local_doh]
-## dnscrypt-proxy can act as a local DoH server. By doing so, web browsers
-## requiring a direct connection to a DoH server in order to enable some
-## features will enable these, without bypassing your DNS proxy.
-## Addresses that the local DoH server should listen to
-# listen_addresses = ['127.0.0.1:3000']
-## Path of the DoH URL. This is not a file, but the part after the hostname
-## in the URL. By convention, `/dns-query` is frequently chosen.
-## For each `listen_address` the complete URL to access the server will be:
-## `https://<listen_address><path>` (ex: `https://127.0.0.1/dns-query`)
-# path = "/dns-query"
-## Certificate file and key - Note that the certificate has to be trusted.
-## See the documentation (wiki) for more information.
-# cert_file = "localhost.pem"
-# cert_key_file = "localhost.pem"
 
 
 
@@ -585,7 +558,7 @@ cache_neg_max_ttl = 600
   ## Anonymized DNS relays
 
   [sources.'relays']
-  urls = ['https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v2/relays.md', 'https://download.dnscrypt.info/resolvers-list/v2/relays.md']
+  urls = ['https://github.com/DNSCrypt/dnscrypt-resolvers/raw/master/v2/relays.md', 'https://download.dnscrypt.info/resolvers-list/v2/relays.md']
   cache_file = '/data/media/0/dnscrypt-proxy/relays.md'
   minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
   refresh_delay = 72
@@ -641,7 +614,7 @@ broken_query_padding = ['cisco', 'cisco-ipv6', 'cisco-familyshield']
 ## A relay can be specified as a DNS Stamp (either a relay stamp, or a
 ## DNSCrypt stamp), an IP:port, a hostname:port, or a server name.
 ##
-## The following example routes "example-server-1" via `anon-example-1` or `anon-example-2`,
+## The following example routes "example-server-1" via `anon-example-1` or `anon-example-2``,
 ## and "example-server-2" via the relay whose relay DNS stamp
 ## is "sdns://gRIxMzcuNzQuMjIzLjIzNDo0NDM".
 ##
@@ -659,6 +632,31 @@ broken_query_padding = ['cisco', 'cisco-ipv6', 'cisco-familyshield']
 #    { server_name='example-server-1', via=['anon-example-1', 'anon-example-2'] },
 #    { server_name='example-server-2', via=['sdns://gRIxMzcuNzQuMjIzLjIzNDo0NDM'] }
 # ]
+  routes = [
+    { server_name='mrkaran', via=['anon-ev-va', 'anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-charis','anon-suami'] },
+    { server_name='arvind-io', via=['anon-ibksturm', 'anon-tiarap', 'anon-kama', 'anon-publicarray',  'anon-scaleway', 'anon-ev-va','anon-charis','anon-suami'] },
+    { server_name='geekdns-hk', via=['anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-ev-va','anon-charis','anon-suami'] },
+    { server_name='dnscrypt-01.adsnomore.io', via=['anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-ev-va','anon-charis','anon-suami'] },
+    { server_name='dnscrypt.eu-nl', via=['anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-ev-va','anon-charis','anon-suami'] },
+    { server_name='dnswarden-dc2-ipv6', via=['anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-ev-va','anon-charis','anon-suami'] },
+    { server_name='ibksturm', via=['anon-tiarap', 'anon-kama', 'anon-publicarray',  'anon-scaleway', 'anon-ev-va','anon-charis','anon-suami'] },
+    { server_name='ev-va', via=['anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-charis','anon-suami'] },
+    { server_name='publicarray-au', via=['anon-ev-va', 'anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-scaleway', 'anon-charis','anon-suami'] },
+    { server_name='publicarray-au2', via=['anon-ev-va', 'anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-scaleway', 'anon-charis','anon-suami'] },
+    { server_name='publicarray-au-doh', via=['anon-ev-va', 'anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-scaleway', 'anon-charis','anon-suami'] },
+    { server_name='publicarray-au2-doh', via=['anon-ev-va', 'anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-scaleway', 'anon-charis','anon-suami'] },
+    { server_name='jp.tiar.app' , via=['anon-ev-va', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-charis','anon-suami'] },
+    { server_name='jp.tiar.app-ipv6' , via=['anon-ev-va', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-charis','anon-suami'] },
+    { server_name='doh.tiar.app' , via=['anon-ev-va', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-charis','anon-suami'] },
+    { server_name='doh.tiar.app-ipv6' , via=['anon-ev-va', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-charis','anon-suami'] },
+    { server_name='scaleway-fr', via=['anon-ev-va', 'anon-tiarap', 'anon-ibksturm', 'anon-publicarray', 'anon-charis','anon-suami'] },
+    { server_name='sfw.scaleway-fr', via=['anon-ev-va', 'anon-tiarap', 'anon-ibksturm', 'anon-publicarray', 'anon-charis','anon-suami'] },
+    { server_name='doh-crypto-sx', via=['anon-ev-va', 'anon-tiarap', 'anon-ibksturm', 'anon-publicarray', 'anon-charis','anon-suami'] },
+    { server_name='doh-crypto-sx-ipv6', via=['anon-ev-va', 'anon-tiarap', 'anon-ibksturm', 'anon-publicarray', 'anon-charis','anon-suami'] },
+    { server_name='suami', via=['anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-ev-va','anon-charis'] },
+    { server_name='charis', via=['anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-publicarray',  'anon-scaleway', 'anon-ev-va','anon-suami'] },
+    { server_name='*', via=['anon-publicarray', 'anon-ev-va', 'anon-tiarap', 'anon-kama', 'anon-ibksturm', 'anon-scaleway', 'anon-charis','anon-suami'] }
+ ]
 
 ## Optional, local, static list of additional servers
 ## Mostly useful for testing your own servers.
