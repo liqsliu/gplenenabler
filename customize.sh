@@ -21,7 +21,7 @@
 
   CONFIG_PATH=$TMPDIR/config
 
-  unzip -ov "$ZIPFILE" 'config/*' 'binary/*' -d $TMPDIR
+  unzip -o "$ZIPFILE" 'config/*' 'binary/*' -d $TMPDIR
 
   ui_print "* Creating binary path"
   mkdir -pv $MODPATH/system/bin
