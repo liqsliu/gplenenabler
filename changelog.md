@@ -1,5 +1,9 @@
 # Changelog
 ## Changelog
+### v2.9.3
+- updated magisk module template
+- updated binary & configuration files to upstream version 2.0.36
+
 ### v2.9.2
 - updated binary & configuration files to upstream version 2.0.33
 ### v2.9.1
