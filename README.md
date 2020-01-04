@@ -44,7 +44,7 @@ A script file named dns-redirect.sh is included in the configuration directory. 
   
 DNS66 or dnsfilter app (both apps available in F-Droid repo) can also  be used instead of custom script in  AFWall. 
 
-## Configuration (post-installing)
+## Configuration (post-installation)
 - Read & correct the configuration options, especially the IP address, which should be same in redirection script and fallback_resolver & netprobe_address of dnscrypt-proxy.toml. 
 - configuration for the "anonymized dns" is included in a separate file routes-relay-customize.txt,  which may get updated as & when time permits, which has to be inserted in the main configuration file dnscrypt-proxy.toml at appropriate place.
 - Configuration is located at `/sdcard/dnscrypt-proxy/dnscrypt-proxy.toml` [or /data/media/0/dnscrypt-proxy/dnscrypt-proxy.toml]
