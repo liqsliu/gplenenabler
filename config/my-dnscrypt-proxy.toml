@@ -514,8 +514,6 @@ cache_neg_max_ttl = 600
 
   # log_format = 'tsv'
 
-
-
 ##########################################
 #        Time access restrictions        #
 ##########################################
@@ -549,8 +547,6 @@ cache_neg_max_ttl = 600
   # wed = [{after='9:00', before='18:00'}]
   # thu = [{after='9:00', before='18:00'}]
   # fri = [{after='9:00', before='17:00'}]
-
-
 
 #########################
 #        Servers        #
@@ -607,9 +603,6 @@ cache_neg_max_ttl = 600
   #  cache_file = 'parental-control.md'
   #  minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
 
-
-
-
 #########################################
 #        Servers with known bugs        #
 #########################################
@@ -623,9 +616,6 @@ cache_neg_max_ttl = 600
 # Do not change that list until the bugs are fixed server-side.
 
 broken_query_padding = ['cisco', 'cisco-ipv6', 'cisco-familyshield']
-
-
-
 
 ################################
 #        Anonymized DNS        #
