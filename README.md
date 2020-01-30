@@ -1,3 +1,9 @@
+google photos len(?) enabler.
+
+下面不用看了。
+
+
+
 # dnscrypt-proxy2 for Android [Revival] 
 ### [bluemeda's original magisk module - Revived](https://github.com/Magisk-Modules-Repo/dnscrypt-proxy/) 
 
