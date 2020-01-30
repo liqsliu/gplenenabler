@@ -10,7 +10,7 @@ MODDIR=${0%/*}
 #		$MODDIR/system/bin/dnscrypt-proxy -config /data/media/0/dnscrypt-proxy/dnscrypt-proxy.toml && sleep 15;
 #	done
 
-# for nginx sshd...
+# for nginx sshd ...
 		/system/bin/sysctl net.ipv4.ip_unprivileged_port_start=0 && echo W: open port for users && sleep 15;
 
 
